@@ -1,29 +1,25 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
-export default defineConfig(({ mode }) => {
-  // Загружаем переменные окружения (используем префикс VITE_)
-  const env = loadEnv(mode, process.cwd(), 'VITE_')
-
-  return {
-    plugins: [vue()],
-    base: env.VITE_BASE_URL || '/0x00001234/', // Используем переменную или fallback
-    build: {
-      outDir: 'dist',
-      emptyOutDir: true,
-      rollupOptions: {
-        input: {
-          main: './index.html',
-          404: './404.html',
-        },
+export default defineConfig({
+  plugins: [vue()],
+  base: '/0x00001234/', // Важно: имя репозитория
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: './index.html', // Главная точка входа
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-      },
-      extensions: ['.js', '.ts', '.vue', '.json'],
+  },
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-  }
+  },
 })
