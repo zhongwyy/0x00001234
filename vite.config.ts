@@ -20,13 +20,14 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/0x00001234/',
+  base: '/0x00001234/', // Важно: имя репозитория
   build: {
     outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
-      output: {
-        assetFileNames: 'assets/[name]-[hash][extname]',
-        entryFileNames: 'assets/[name]-[hash].js',
+      input: {
+        main: './index.html',
+        404: './404.html',
       },
     },
   },

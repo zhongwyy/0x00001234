@@ -8,11 +8,13 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
   <script>
-    // Перенаправление для SPA
-    if (window.location.href.includes('/src/')) {
+    if (window.location.pathname.includes('/src/')) {
+      window.location.href = '/0x00001234/'
+    }
+    if (window.location.pathname.endsWith('.ts')) {
       window.location.href = '/0x00001234/'
     }
   </script>
