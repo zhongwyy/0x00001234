@@ -20,17 +20,21 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
+  base: '/0x00001234/', // Важно: имя репозитория
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        404: './404.html',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
     },
     extensions: ['.js', '.ts', '.vue', '.json'],
-  },
-  base: '/0x00001234/',
-  build: {
-    rollupOptions: {
-      external: [], // Явно указываем внешние зависимости, если нужно
-    },
   },
 })
