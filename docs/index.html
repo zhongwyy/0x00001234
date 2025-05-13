@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" href="/favicon.ico"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>0x00001234</title>
+    <script type="module" crossorigin src="/0x00001234/assets/index-B_e2x7ut.js"></script>
+    <link rel="stylesheet" crossorigin href="/0x00001234/assets/index-BUckVncY.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    if (window.location.pathname.includes('/src/')) {
+      window.location.href = '/0x00001234/'
+    }
+    // Блокировка всех запросов к .ts файлам и исправление путей
+    if (window.location.pathname.match(/\/src\/|\/main\.ts$/)) {
+      window.location.href = '/0x00001234/'
+    }
+
+    // Исправление пути к favicon
+    const link = document.createElement('link')
+    link.rel = 'icon'
+    link.href = '/0x00001234/favicon.ico'
+    document.head.appendChild(link)
+  </script>
+</html>
