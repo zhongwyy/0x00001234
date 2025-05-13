@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   base: '/0x00001234/', // Важно: имя репозитория
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     emptyOutDir: true,
     rollupOptions: {
       input: './index.html', // Главная точка входа
